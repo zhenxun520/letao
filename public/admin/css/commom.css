@@ -133,3 +133,11 @@ html,body{
      }
 
 
+     /* user用户 */
+
+        .table.table-bordered td {
+            text-align: center;
+            vertical-align: middle;
+    }
+
+

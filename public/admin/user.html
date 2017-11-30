@@ -53,8 +53,12 @@
 
     <div class="lt-main">
         <div class="topbar">
-            <a href="javascript:;" class="pull-left icon_menu"><span  class="glyphicon glyphicon-align-justify"></span></a>
-            <a href="javascript:;" class="pull-right icon_logout"><span class="glyphicon glyphicon-log-out"></span></a>
+            <a href="javascript:;" class="pull-left icon_menu">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </a>
+            <a href="javascript:;" class="pull-right icon_logout">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
         </div>
 
         <div class="container-fluid">
@@ -62,14 +66,30 @@
                 <li>
                     <a href="#">管理系统</a>
                 </li>
-                <li>首页</li>
+                <li>用户管理</li>
             </ol>
 
             <div class="lt-content">
-                <div class="pull-left chart_left">11</div>
-                <div  class="pull-right chart_right">22</div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td width="10%">序号</td>
+                            <td width="30%">用户名</td>
+                            <td width="30%">手机号</td>
+                            <td width="20%">状态</td>
+                            <td width="10%">操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 挖坑 -->
+                    </tbody>
+                </table>
+                <div class="text-right">
+                        <ul id="pagination">
+                         
+                        </ul>
+                </div>
             </div>
-        
         </div>
     </div>
 
@@ -87,7 +107,7 @@
                 <div class="modal-body">
                     <p class="text-danger">
                         <span class="glyphicon glyphicon-info-sign"></span>
-                         您确定要退出后台管理系统吗？
+                        您确定要退出后台管理系统吗？
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -100,10 +120,54 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    
-    
+
+    <!-- 启动禁用的模态框 -->
+    <div class="modal fade" tabindex="-1" id="modaluser">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                     你确定要执行此操作吗？
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary btn-confirm">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
 
+
+
+
+    <script type="text/html" id="users">
+        {{each rows v i }}
+        <tr>
+            <td>{{(page-1)*size+i+1}}</td>
+            <td>{{v.username }}</td>
+            <td>{{v.mobile}}</td>
+            <td>{{v.isDelete === 1?"正常":"禁用" }}</td>
+            <td data-id="{{ v.id}}">
+                {{if v.isDelete=== 0}}
+                <button class="btn btn-success btn-sm">启动</button>
+                {{else if v.isDelete=== 1}}
+                <button class="btn btn-danger  btn-sm">禁用</button>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </script>
 
 </body>
 
@@ -113,5 +177,8 @@
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/echarts/echarts.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+
 <script src="./js/commom.js"></script>
-<script src="./js/login.js"></script>
+<script src="./js/user.js"></script>
