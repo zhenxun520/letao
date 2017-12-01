@@ -53,8 +53,12 @@
 
     <div class="lt-main">
         <div class="topbar">
-            <a href="javascript:;" class="pull-left icon_menu"><span  class="glyphicon glyphicon-align-justify"></span></a>
-            <a href="javascript:;" class="pull-right icon_logout"><span class="glyphicon glyphicon-log-out"></span></a>
+            <a href="javascript:;" class="pull-left icon_menu">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </a>
+            <a href="javascript:;" class="pull-right icon_logout">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
         </div>
 
         <div class="container-fluid">
@@ -62,15 +66,32 @@
                 <li>
                     <a href="#">管理系统</a>
                 </li>
-                <li><a href="#">分类管理</a></li>
+                <li>
+                    <a href="#">分类管理</a>
+                </li>
                 <li>一级分类</li>
             </ol>
 
             <div class="lt-content">
-                <div class="pull-left chart_left">11</div>
-                <div  class="pull-right chart_right">22</div>
+                <button type="button" class="btn btn-default mb-bt btn-add">添加分类</button>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>分类名称</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 挖个洞 -->
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <ul id="pagination">
+
+                    </ul>
+                </div>
             </div>
-        
+
         </div>
     </div>
 
@@ -88,7 +109,7 @@
                 <div class="modal-body">
                     <p class="text-danger">
                         <span class="glyphicon glyphicon-info-sign"></span>
-                         您确定要退出后台管理系统吗？
+                        您确定要退出后台管理系统吗？
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -101,10 +122,45 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    
-    
+
+    <!-- 添加模态框 -->
+    <div class="modal fade" tabindex="-1" id="motelfrist">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">添加分类</h4>
+                </div>
+                <form id="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" placeholder="请输入一级分类" autocomplete="off" class="form-control" name="categoryName">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary btn-primary">添加</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 
+
+    <script type="text/html" id="tpl">
+        {{each rows v i }}
+        <tr>
+            <td>{{(page-1)*size+i+1}}</td>
+            <td>{{v.categoryName}}</td>
+        </tr>
+        {{/each}}
+    </script>
 
 </body>
 
@@ -113,5 +169,8 @@
 <script src="./lib/bootstrap/js/bootstrap.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+
 <script src="./js/commom.js"></script>
-<script src="./js/login.js"></script>
+<script src="./js/frist.js"></script>
