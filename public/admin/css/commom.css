@@ -172,4 +172,8 @@ html,body{
             opacity: 0;
     }
 
+    .container-fluid{
+        padding-top: 70px;
+    }
+
 
